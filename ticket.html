@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Festava Live - Billetterie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'ui-sans-serif', 'system-ui'] },
+                    colors: { brand: { DEFAULT: '#ff6a00' } }
+                }
+            }
+        }
+    </script>
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/templatemo-festava-live.css" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth
+        }
+    </style>
+</head>
+
+<body class="bg-[#0b0e16] text-white font-sans">
+    <main>
+        <!-- Nav (identique à index2) -->
+        <nav class="fixed top-0 left-0 w-full z-50 bg-[#0b0e16]/80 backdrop-blur border-b border-white/10">
+            <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+                <a class="text-2xl font-bold tracking-tight" href="index.html">Festava Live</a>
+                <div class="hidden md:flex items-center gap-8">
+                    <ul class="flex items-center mr-12 gap-6">
+                        <li><a class="text-white/80 hover:text-white" href="index.html#apropos">À propos</a></li>
+                        <li><a class="text-white/80 hover:text-white" href="index.html#artistes">Artistes</a></li>
+                        <li><a class="text-white/80 hover:text-white" href="index.html#programme">Programme</a></li>
+                        <li><a class="text-white/80 hover:text-white" href="index.html#tarifs">Tarifs</a></li>
+                        <li><a class="text-white/80 hover:text-white" href="index.html#contact">Contact</a></li>
+                    </ul>
+                    <a href="ticket.html"
+                        class="px-4 py-2 rounded-full bg-brand text-white text-sm font-semibold shadow hover:opacity-90">Acheter
+                        un billet</a>
+                </div>
+                <button id="navToggle" class="md:hidden p-2 rounded-md border border-white/20"
+                    aria-controls="mobileMenu" aria-expanded="false" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0b0e16]/95">
+                <div class="mx-auto max-w-7xl px-4 py-3">
+                    <ul class="flex flex-col gap-2">
+                        <li><a class="block py-2 text-white/90 hover:text-white" href="index.html#accueil">Accueil</a>
+                        </li>
+                        <li><a class="block py-2 text-white/90 hover:text-white" href="index.html#apropos">À
+                                propos</a></li>
+                        <li><a class="block py-2 text-white/90 hover:text-white" href="index.html#artistes">Artistes</a>
+                        </li>
+                        <li><a class="block py-2 text-white/90 hover:text-white"
+                                href="index.html#programme">Programme</a></li>
+                        <li><a class="block py-2 text-white/90 hover:text-white" href="index.html#tarifs">Tarifs</a>
+                        </li>
+                        <li><a class="block py-2 text-white/90 hover:text-white" href="index.html#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <a href="ticket.html"
+                        class="mt-3 inline-block px-5 py-2 rounded-full bg-brand text-white text-sm font-semibold shadow hover:opacity-90">Acheter
+                        un billet</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Billetterie -->
+        <section class="pt-20 md:pt-28 pb-16">
+            <div class="mx-auto max-w-7xl px-4">
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl md:text-4xl font-extrabold">Acheter un billet</h1>
+                    <p class="text-white/70 mt-3">Choisissez votre type d'accès et renseignez vos coordonnées.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <!-- Formulaire -->
+                    <div class="lg:col-span-2">
+                        <form id="ticket-form" action="#" method="post" class="bg-white/5 rounded-2xl p-6 space-y-6">
+                            <!-- Type + quantité -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="type" class="block text-sm font-medium text-white/90 mb-2">Type d'accès
+                                        *</label>
+                                    <select id="type" name="type" required
+                                        class="w-full px-4 py-3 rounded-lg bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand">
+                                        <option value="" disabled selected>Choisir un type</option>
+                                        <option value="standard" class="text-gray-600">Standard</option>
+                                        <option value="gold" class="text-gray-600">Gold</option>
+                                        <option value="vip" class="text-gray-600">VIP</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="quantity" class="block text-sm font-medium text-white/90 mb-2">Quantité
+                                        *</label>
+                                    <input id="quantity" name="quantity" type="number" min="1" value="1" required
+                                        class="w-full px-4 py-3 rounded-lg bg-white/10 focus:outline-none focus:ring-2 focus:ring-brand" />
+                                </div>
+                            </div>
+
+                            <!-- Identité -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="fullname" class="block text-sm font-medium text-white/90 mb-2">Nom
+                                        complet *</label>
+                                    <input id="fullname" name="fullname" type="text" required
+                                        class="w-full px-4 py-3 rounded-lg bg-white/10 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand"
+                                        placeholder="Votre nom complet" />
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-white/90 mb-2">Téléphone
+                                        *</label>
+                                    <input id="phone" name="phone" type="tel" required
+                                        class="w-full px-4 py-3 rounded-lg bg-white/10 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand"
+                                        placeholder="77 123 45 67" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-white/90 mb-2">Email *</label>
+                                <input id="email" name="email" type="email" required pattern="[^ @]*@[^ @]*"
+                                    class="w-full px-4 py-3 rounded-lg bg-white/10 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand"
+                                    placeholder="vous@exemple.com" />
+                            </div>
+
+                            <!-- Notes -->
+                            <div>
+                                <label for="notes" class="block text-sm font-medium text-white/90 mb-2">Notes</label>
+                                <textarea id="notes" name="notes" rows="4"
+                                    class="w-full px-4 py-3 rounded-lg bg-white/10 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-brand resize-none"
+                                    placeholder="Demande particulière (optionnel)"></textarea>
+                            </div>
+
+                            <!-- Consentement -->
+                            <div class="flex items-start gap-3">
+                                <input id="cgu" name="cgu" type="checkbox" required
+                                    class="mt-1 w-4 h-4 text-brand border-white/30 rounded focus:ring-brand" />
+                                <label for="cgu" class="text-sm text-white/80">J'accepte les conditions de vente et la
+                                    <a href="#" class="text-brand underline">politique de confidentialité</a>.</label>
+                            </div>
+
+                            <!-- Bouton -->
+                            <button type="submit"
+                                class="w-full inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand text-white font-semibold hover:opacity-90">
+                                Valider l'achat
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Récap tarifs (optionnel) -->
+                    <div class="lg:col-span-1 space-y-4">
+                        <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
+                            <h3 class="font-semibold text-white/90 mb-2">Types d'accès</h3>
+                            <ul class="space-y-2 text-white/70 text-sm">
+                                <li class="flex items-center gap-2"><span class="bi-check-circle text-brand"></span>
+                                    Standard — 15.000 F</li>
+                                <li class="flex items-center gap-2"><span class="bi-check-circle text-amber-300"></span>
+                                    Gold — 25.000 F</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="bi-check-circle text-purple-300"></span> VIP — 40.000 F</li>
+                            </ul>
+                        </div>
+
+                        <div class="rounded-2xl h-[450px] bg-white/5 p-5 ring-1 ring-white/10">
+                            <img class="w-full h-full object-cover"
+                                src="images/artists/joecalih-UmTZqmMvQcw-unsplash.jpg" alt="Standard">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="bg-white/5 text-gray-300 pt-16 pb-8">
+        <div class="container mx-auto max-w-7xl px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+
+                <!-- Logo + description -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">EventNation</h3>
+                    <p class="text-white/70">
+                        La plateforme dédiée aux événements, concerts, et festivals au Sénégal.
+                        Réservez vos billets en ligne et vivez chaque instant unique.
+                    </p>
+                </div>
+
+                <!-- Liens utiles -->
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-4">Liens rapides</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#section_1" class="text-white/70 hover:text-brand transition">Accueil</a></li>
+                        <li><a href="#section_2" class="text-white/70 hover:text-brand transition">Événements</a></li>
+                        <li><a href="#section_3" class="text-white/70 hover:text-brand transition">Billetterie</a></li>
+                        <li><a href="#section_6" class="text-white/70 hover:text-brand transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-xl font-semibold text-white mb-4">Contact</h4>
+                    <ul class="space-y-2 text-white/70">
+                        <li class="text-white/70">Dakar, Sénégal</li>
+                        <li class="text-white/70">+221 77 473 13 41</li>
+                        <li class="text-white/70">contact@festavalive.com</li>
+                    </ul>
+
+                    <!-- Réseaux sociaux -->
+                    <div class="flex items-center gap-5 mt-5">
+                        <a href="facebook" onclick="oups(event)" class="hover:text-brand transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="twitter" onclick="oups(event)" class="hover:text-brand transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="instagram" onclick="oups(event)" class="hover:text-brand transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="youtube" onclick="oups(event)" class="hover:text-brand transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Ligne de séparation -->
+            <div
+                class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-center text-sm text-gray-500">
+                <p>© <span id="year"></span><span class="text-white"> FestavaLive</span>. Tous droits réservés.</p>
+                <p class="text-gray-400">Développé par : <a href="https://mouhatech.com" target="_blank"
+                        class="text-white hover:text-gray-200">MouhaTech</a></p>
+                <p class="text-gray-400 hidden md:block">Politique de confidentialité</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // l’année
+        document.getElementById("year").textContent = new Date().getFullYear();
+        // funtion Oups
+        function oups(e) {
+            e.preventDefault();
+            alert("Oups 😒, les liens ne sont pas encore disponibles.");
+            e.stopPropagation();
+        }
+
+        // ticket form
+        document.addEventListener('DOMContentLoaded', function () {
+            var ticketForm = document.getElementById('ticket-form');
+            if (ticketForm) {
+                ticketForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    window.location.href = 'index.html#accueil';
+                });
+            }
+        });
+    </script>
+
+    <!-- Nav JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.getElementById('navToggle');
+            var menu = document.getElementById('mobileMenu');
+            if (btn && menu) {
+                btn.addEventListener('click', function () {
+                    var isHidden = menu.classList.toggle('hidden');
+                    btn.setAttribute('aria-expanded', (!isHidden).toString());
+                });
+                menu.querySelectorAll('a[href^="index2.html#"]').forEach(function (a) {
+                    a.addEventListener('click', function () {
+                        menu.classList.add('hidden');
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                var mq = window.matchMedia('(min-width: 768px)');
+                function sync(e) { if (e.matches) { menu.classList.add('hidden'); btn.setAttribute('aria-expanded', 'false'); } }
+                if (mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ticketForm = document.getElementById('ticket-form');
+            if (ticketForm) {
+                ticketForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    window.location.href = 'index.html#accueil';
+                });
+            }
+        });
+    </script>
+
+    <!-- JS (facultatifs) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/click-scroll.js"></script>
+</body>
+
+</html>
