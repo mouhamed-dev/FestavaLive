@@ -12,6 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <!-- Open graph -->
+    <meta property="og:title" content="Festava Live">
+    <meta property="og:description" content="Découvrez les événements, concerts et festivals au Sénégal.">
+    <meta property="og:image" content="https://mouhamed-dev.github.io/FestavaLive/images/artists/favicon.png">
+    <meta property="og:url" content="https://mouhamed-dev.github.io/FestavaLive/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="favicon.icon" href="images/artists/favicon.png">
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -62,7 +70,7 @@
                     </svg>
                 </button>
             </div>
-            <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0b0e16]/95">
+            <div id="mobileMenu" class="md:hidden hidden border-t border-white/10 bg-[#0b0e16]/50 backdrop-blur transition-colors duration-200">
                 <div class="mx-auto max-w-7xl px-4 py-3">
                     <ul class="flex flex-col gap-2">
                         <li><a class="block py-2 text-white/90 hover:text-white" href="#accueil">Accueil</a></li>
@@ -116,15 +124,15 @@
                             <ul
                                 class="social-icon d-flex align-items-center justify-content-center flex items-center gap-3">
                                 <span class="text-white me-3">Partagez :</span>
-                                <li class="social-icon-item"><a href="facebook" onclick="oups(event)"
+                                <li class="social-icon-item"><button onclick="share()"
                                         class="social-icon-link text-white/80 hover:text-white"><i
-                                            class="fab fa-facebook-f"></i></a></li>
-                                <li class="social-icon-item"><a href="whatsapp" onclick="oups(event)"
+                                            class="fab fa-facebook-f"></i></button></li>
+                                <li class="social-icon-item"><button onclick="share()"
                                         class="social-icon-link text-white/80 hover:text-white"><i
-                                            class="fab fa-whatsapp"></i></a></li>
-                                <li class="social-icon-item"><a href="instagram" onclick="oups(event)"
+                                            class="fab fa-whatsapp"></i></button></li>
+                                <li class="social-icon-item"><button onclick="share()"
                                         class="social-icon-link text-white/80 hover:text-white"><i
-                                            class="fab fa-instagram"></i></a></li>
+                                            class="fab fa-instagram"></i></button></li>
                             </ul>
                         </div>
                     </div>
@@ -186,7 +194,7 @@
 
                             <div class="artists-thumb bg-white/5 rounded-xl overflow-hidden">
                                 <div class="artists-image-wrap">
-                                    <img src="images/artists/_d6a2987.jpg"
+                                    <img src="images/artists/d6a2987.jpg"
                                         class="artists-image w-full h-72 object-cover" alt="">
                                 </div>
                                 <div class="artists-hover p-6">
@@ -538,6 +546,21 @@
             });
             }
         });
+
+        function share() {
+        if (navigator.share) {
+            navigator
+                .share({
+                title: "FestavaLive",
+                text: "Découvrez les événements, concerts et festivals au Sénégal.", 
+                url: "https://mouhamed-dev.github.io/FestavaLive/",
+                })
+                .then(() => console.log("Partage réussi"))
+                .catch((error) => console.log("Erreur de partage", error));
+            } else {
+            alert("Le partage n'est pas pris en charge sur ce navigateur.");
+            }
+        }
     </script>
 
 
